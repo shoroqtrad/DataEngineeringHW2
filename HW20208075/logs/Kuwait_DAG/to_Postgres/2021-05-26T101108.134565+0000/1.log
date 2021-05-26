@@ -1,0 +1,85 @@
+[2021-05-26 10:14:17,309] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: Kuwait_DAG.to_Postgres 2021-05-26T10:11:08.134565+00:00 [queued]>
+[2021-05-26 10:14:17,336] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: Kuwait_DAG.to_Postgres 2021-05-26T10:11:08.134565+00:00 [queued]>
+[2021-05-26 10:14:17,337] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2021-05-26 10:14:17,337] {taskinstance.py:1069} INFO - Starting attempt 1 of 2
+[2021-05-26 10:14:17,338] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2021-05-26 10:14:17,356] {taskinstance.py:1089} INFO - Executing <Task(PythonOperator): to_Postgres> on 2021-05-26T10:11:08.134565+00:00
+[2021-05-26 10:14:17,362] {standard_task_runner.py:52} INFO - Started process 109 to run task
+[2021-05-26 10:14:17,369] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'Kuwait_DAG', 'to_Postgres', '2021-05-26T10:11:08.134565+00:00', '--job-id', '22', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/covid_dag.py', '--cfg-path', '/tmp/tmp57jp9d8z', '--error-file', '/tmp/tmpwpmscgjv']
+[2021-05-26 10:14:17,370] {standard_task_runner.py:77} INFO - Job 22: Subtask to_Postgres
+[2021-05-26 10:14:17,446] {logging_mixin.py:104} INFO - Running <TaskInstance: Kuwait_DAG.to_Postgres 2021-05-26T10:11:08.134565+00:00 [running]> on host 431e058b07b3
+[2021-05-26 10:14:17,515] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=admin
+AIRFLOW_CTX_DAG_ID=Kuwait_DAG
+AIRFLOW_CTX_TASK_ID=to_Postgres
+AIRFLOW_CTX_EXECUTION_DATE=2021-05-26T10:11:08.134565+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-05-26T10:11:08.134565+00:00
+[2021-05-26 10:14:18,262] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 608, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: table "Covid19_Scaled" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 117, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 128, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/covid_dag.py", line 92, in CSV_to_Postgres
+    DF_Kuwait_Scaled.to_sql('Covid19_Scaled', engine,if_exists='replace',index=False)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/generic.py", line 2615, in to_sql
+    method=method,
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/sql.py", line 598, in to_sql
+    method=method,
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/sql.py", line 1393, in to_sql
+    table.create()
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/sql.py", line 725, in create
+    self.pd_sql.drop_table(self.name, self.schema)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/sql.py", line 1454, in drop_table
+    self.get_table(table_name, schema).drop()
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/sql/schema.py", line 942, in drop
+    bind._run_visitor(ddl.SchemaDropper, self, checkfirst=checkfirst)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 2095, in _run_visitor
+    conn._run_visitor(visitorcallable, element, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1656, in _run_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/sql/visitors.py", line 145, in traverse_single
+    return meth(obj, **kw)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/sql/ddl.py", line 1018, in visit_table
+    self.connection.execute(DropTable(table))
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/sql/ddl.py", line 72, in _execute_on_connection
+    return connection._execute_ddl(self, multiparams, params)
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1073, in _execute_ddl
+    compiled,
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1317, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1511, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 608, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) table "Covid19_Scaled" does not exist
+
+[SQL: 
+DROP TABLE "Covid19_Scaled"]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+[2021-05-26 10:14:18,306] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=Kuwait_DAG, task_id=to_Postgres, execution_date=20210526T101108, start_date=20210526T101417, end_date=20210526T101418
+[2021-05-26 10:14:18,390] {local_task_job.py:146} INFO - Task exited with return code 1

@@ -1,0 +1,24 @@
+[2021-05-26 10:14:12,238] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: Kuwait_DAG.PlotingScaledDataForKuwait 2021-05-26T10:11:08.134565+00:00 [queued]>
+[2021-05-26 10:14:12,265] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: Kuwait_DAG.PlotingScaledDataForKuwait 2021-05-26T10:11:08.134565+00:00 [queued]>
+[2021-05-26 10:14:12,265] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2021-05-26 10:14:12,266] {taskinstance.py:1069} INFO - Starting attempt 1 of 2
+[2021-05-26 10:14:12,266] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2021-05-26 10:14:12,283] {taskinstance.py:1089} INFO - Executing <Task(PythonOperator): PlotingScaledDataForKuwait> on 2021-05-26T10:11:08.134565+00:00
+[2021-05-26 10:14:12,290] {standard_task_runner.py:52} INFO - Started process 102 to run task
+[2021-05-26 10:14:12,296] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'Kuwait_DAG', 'PlotingScaledDataForKuwait', '2021-05-26T10:11:08.134565+00:00', '--job-id', '20', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/covid_dag.py', '--cfg-path', '/tmp/tmpym2uih0f', '--error-file', '/tmp/tmp86gssqpl']
+[2021-05-26 10:14:12,298] {standard_task_runner.py:77} INFO - Job 20: Subtask PlotingScaledDataForKuwait
+[2021-05-26 10:14:12,363] {logging_mixin.py:104} INFO - Running <TaskInstance: Kuwait_DAG.PlotingScaledDataForKuwait 2021-05-26T10:11:08.134565+00:00 [running]> on host 431e058b07b3
+[2021-05-26 10:14:12,423] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=admin
+AIRFLOW_CTX_DAG_ID=Kuwait_DAG
+AIRFLOW_CTX_TASK_ID=PlotingScaledDataForKuwait
+AIRFLOW_CTX_EXECUTION_DATE=2021-05-26T10:11:08.134565+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-05-26T10:11:08.134565+00:00
+[2021-05-26 10:14:13,162] {__init__.py:482} WARNING - Matplotlib created a temporary config/cache directory at /tmp/matplotlib-ttvhn93a because the default path (/home/airflow/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+[2021-05-26 10:14:13,390] {font_manager.py:1423} INFO - Generating new fontManager, this may take some time...
+[2021-05-26 10:14:16,018] {python.py:118} INFO - Done. Returned value was: None
+[2021-05-26 10:14:16,038] {taskinstance.py:1192} INFO - Marking task as SUCCESS. dag_id=Kuwait_DAG, task_id=PlotingScaledDataForKuwait, execution_date=20210526T101108, start_date=20210526T101412, end_date=20210526T101416
+[2021-05-26 10:14:16,123] {taskinstance.py:1246} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-05-26 10:14:16,140] {local_task_job.py:146} INFO - Task exited with return code 0
